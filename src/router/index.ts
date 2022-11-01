@@ -6,6 +6,10 @@ import List from '../views/list/index.vue'
 import GoodsList from '../views/goods/list/index.vue'
 import GoodsAdd from '../views/goods/add/index.vue'
 
+import Upload from '../views/upload/index.vue'
+
+import Flex from '../views/flex/index.vue'
+
 const routes:Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -35,6 +39,16 @@ const routes:Array<RouteRecordRaw> = [
     path: '/goodsList',
     name: 'GoodsList',
     component:GoodsList
+  },
+  {
+    path: '/upload',
+    name: 'Upload',
+    component:Upload
+  },
+  {
+    path: '/flex',
+    name: 'Flex',
+    component:Flex
   }
 ]
 

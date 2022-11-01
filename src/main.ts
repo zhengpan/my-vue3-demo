@@ -7,7 +7,10 @@ import vant from 'vant';
 import 'vant/lib/index.css';
 
 import App from './App.vue'
+
 import router from './router'
+
+import Directives from './js/directives'
 
 import './assets/reset.css'
 
@@ -16,6 +19,8 @@ const app = createApp(App)
 app.use(createPinia())
 
 app.use(router)
+
+app.use(Directives)
 
 vant.install(app);
 // app.use(Button)

@@ -2,6 +2,8 @@
 import type { IRegisterValue,ILoginValue,IList,IAdd,IDelete,IPage } from '../types/index'
 
 import server from '../utils/request.js'
+
+import type { AxiosRequestConfig } from 'axios';
 // 登录
 export const login = (payload: ILoginValue) => {
   // return server.post('/login',payload).then(res => res.data);
@@ -33,4 +35,9 @@ export const goodsDetail = (payload:IDelete) => {
   return server.get('/goods/detail', {params:payload}).then(res => res.data);
 }
 // 获取用户列表
-export const getUserList = (query: IList) => server.get('/user/list',{params:query}).then(res => res.data)
+export const getUserList = (query: IList) => server.get('/user/list', { params: query }).then(res => res.data)
+
+// 文件上传
+export const uploadFile = (payload:any,config:AxiosRequestConfig) => {
+  return server.post('/upload', payload,config).then(res => res.data);
+}
