@@ -1,32 +1,30 @@
 <template>
-    <div className="marquee-root" @click="handleClick">
-      <div
-        className="marquee-content"
-        :style="marqueeStyle">
-        {{marqueeStr}}
-      </div>
+  <div className="marquee-root" @click="handleClick">
+    <div className="marquee-content" :style="marqueeStyle">
+      {{ marqueeStr }}
     </div>
+  </div>
 </template>
-<script setup lang='ts'>
-import {computed} from 'vue'
-  const props = defineProps({
-    marqueeStr: {
-      type: String,
-      default:""
-    }
-  })
+<script setup lang="ts">
+import { computed } from "vue";
+const props = defineProps({
+  marqueeStr: {
+    type: String,
+    default: "",
+  },
+});
 
 const marqueeStyle = computed(() => {
-  return {animationDuration:props.marqueeStr.length * 0.2 + 10 + "s"}
-})
+  return { animationDuration: props.marqueeStr.length * 0.2 + 10 + "s" };
+});
 
-  const emits = defineEmits(['getHello'])
+const emits = defineEmits(["getHello"]);
 
 const handleClick = () => {
-  emits("getHello",'我就是个子组件')
-}
+  emits("getHello", "我就是个子组件");
+};
 </script>
-<style lang='less' scoped>
+<style lang="less" scoped>
 @keyframes marqueeAnim {
   0% {
     transform: translateX(100vw);

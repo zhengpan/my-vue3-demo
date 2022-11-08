@@ -10,6 +10,8 @@ import Upload from "../views/upload/index.vue";
 
 import Flex from "../views/flex/index.vue";
 
+import Foods from "../views/foods/index.vue";
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -49,6 +51,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/flex",
     name: "Flex",
     component: Flex,
+  },
+  {
+    path: "/foods",
+    name: "Foods",
+    component: Foods,
   },
 ];
 

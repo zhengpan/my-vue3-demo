@@ -34,6 +34,7 @@ const listennerScroll = (el: ElType) => {
 
 // 加载真实图片
 const load = (el: ElType) => {
+
   const windowHeight = document.documentElement.clientHeight;
   const elTop = el.getBoundingClientRect().top;
   const elBtm = el.getBoundingClientRect().bottom;
