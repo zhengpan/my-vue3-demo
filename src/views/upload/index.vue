@@ -26,13 +26,18 @@
         'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f2421e0269d41299dad3ff4bd0dced9~tplv-k3u1fbpfcp-watermark.image?'
       "
     />
+    <div>{{ dateStr }}</div>
+    <div v-if="flag">{{ dateStr }}</div>
   </div>
 </template>
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import { uploadFile } from "@/api";
 import MarqueeNode from "./component/marqueeNode.vue";
 import TimeDown from "./component/timeDown.vue";
+const flag = ref<boolean>(false);
+let message = ref<string>("郑攀");
+let myName = "计算属性";
 
 interface IData {
   url: string;
@@ -66,6 +71,14 @@ const upload = async () => {
 const getHello = (childMsg: string) => {
   marqueeData.value = `我是父组件，我要改变你的值,${childMsg}`;
 };
+
+const dateStr = computed(() => {
+  return myName + "，你好！";
+});
+setTimeout(() => {
+  myName = "刘欢";
+  flag.value = true;
+}, 2000);
 </script>
 <style lang="less" scoped>
 .container {
