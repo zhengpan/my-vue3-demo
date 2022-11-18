@@ -1,33 +1,34 @@
 <template>
   <div class="activity-desc-wrapper">
-  <input
-    type="checkbox"
-    class="toggleInput"
-    id="toggleInput"
-    v-model="isUnFold"
-  />
-  <div class="activity-desc" ref="descBox" id="descBox">
-    <label
-      class="btn"
-      for="toggleInput"
-      v-if="isMoreThan2Line && (!isUnFold || isMoreThan7Line)"
-      >{{ isUnFold ? '展开' : '收起' }}</label>
+    <input
+      type="checkbox"
+      class="toggleInput"
+      id="toggleInput"
+      v-model="isUnFold"
+    />
+    <div class="activity-desc" ref="descBox" id="descBox">
+      <label
+        class="btn"
+        for="toggleInput"
+        v-if="isMoreThan2Line && (!isUnFold || isMoreThan7Line)"
+        >{{ isUnFold ? "展开" : "收起" }}</label
+      >
       概述文字概述文字概述文字概述文字概
       述文字概述文字概述文字概述文字概述文字概述文字
       述文字概述文字概述文字概述文字概述文字概述文字
       述文字概述文字概述文字概述文字概述文字概述文字
       述文字概述文字概述文字概述文字概述文字概述文字
-    <label
-      class="btn-no-absolute"
-      for="toggleInput"
-      v-if="isUnFold && !isMoreThan7Line"
-      >收起</label
-    >
+      <label
+        class="btn-no-absolute"
+        for="toggleInput"
+        v-if="isUnFold && !isMoreThan7Line"
+        >收起</label
+      >
+    </div>
   </div>
-</div>
 </template>
-<script setup lang='ts'>
-import { ref, reactive, onMounted } from 'vue'
+<script setup lang="ts">
+import { ref, reactive, onMounted } from "vue";
 
 const isUnFold = ref<boolean>(false);
 let isMoreThan2Line = ref<boolean>(false);
@@ -36,22 +37,23 @@ const descBox = ref<HTMLElement | null>(null);
 
 onMounted(() => {
   getContentHeight();
-})
+});
 
 const getContentHeight = () => {
   if (descBox.value) {
     const height = (descBox.value as HTMLElement).scrollHeight;
-    const lineHeightWithPx:string = window.getComputedStyle(descBox.value as HTMLElement).lineHeight
+    const lineHeightWithPx: string = window.getComputedStyle(
+      descBox.value as HTMLElement
+    ).lineHeight;
     const matchItemArray = lineHeightWithPx.match(/\d+\.*\d+/g);
-    const lineHeight = matchItemArray &&  +matchItemArray[0];
-    console.log(lineHeight)
-    isMoreThan7Line.value = (height / Number(lineHeight)) > 7;
-    isMoreThan2Line.value = (height / Number(lineHeight)) > 2;
+    const lineHeight = matchItemArray && +matchItemArray[0];
+    console.log(lineHeight);
+    isMoreThan7Line.value = height / Number(lineHeight) > 7;
+    isMoreThan2Line.value = height / Number(lineHeight) > 2;
   }
-
-}
+};
 </script>
-<style lang='less' scoped>
+<style lang="less" scoped>
 .activity-desc-wrapper {
   display: flex;
   .toggleInput {
@@ -86,7 +88,7 @@ const getContentHeight = () => {
       color: #939fe1;
       background: #f5f7fa;
       &::before {
-        content: '...';
+        content: "...";
         color: #8a8f99;
         transform: translateX(-100%);
       }

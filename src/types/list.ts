@@ -1,6 +1,6 @@
-export interface IList{
-  page: number,
-  pageSize:number
+export interface IList {
+  page: number;
+  pageSize: number;
 }
 
 export interface IResult {

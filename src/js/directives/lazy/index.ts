@@ -34,7 +34,6 @@ const listennerScroll = (el: ElType) => {
 
 // 加载真实图片
 const load = (el: ElType) => {
-
   const windowHeight = document.documentElement.clientHeight;
   const elTop = el.getBoundingClientRect().top;
   const elBtm = el.getBoundingClientRect().bottom;
@@ -76,7 +75,7 @@ const directive: Directive = {
   },
   // 在绑定元素的父组件
   // 及他自己的所有子节点都挂载完成后调用
-  mounted(el: ElType, binding: DirectiveBinding) {
+  mounted(el: ElType) {
     // 兼容处理
     if ("IntersectionObserver" in window) {
       observe(el);

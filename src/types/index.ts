@@ -1,7 +1,7 @@
-import type { ILoginValue } from './login'
-import type { IRegisterValue } from './register'
-import type { IList, IResult } from './list'
-import type { IAdd,IModify,IGoodList,IPage,IDelete } from './goods'
+import type { ILoginValue } from "./login";
+import type { IRegisterValue } from "./register";
+import type { IList, IResult } from "./list";
+import type { IAdd, IModify, IGoodList, IPage, IDelete } from "./goods";
 
 export {
   ILoginValue,
@@ -12,5 +12,5 @@ export {
   IModify,
   IGoodList,
   IPage,
-  IDelete
-}
+  IDelete,
+};
