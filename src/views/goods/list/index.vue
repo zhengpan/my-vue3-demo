@@ -32,7 +32,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import type { IGoodList, IDelete } from "@/types/index";
+import type { IGoodList } from "@/types/index";
 import { goodsList, goodsDelete } from "@/api";
 const router = useRouter();
 const list = ref<Array<IGoodList>>([]);

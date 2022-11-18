@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted, nextTick } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import foodComponent from "./components/food-component.vue";
 import FoodMenu from "./components/food-menu.vue";
 

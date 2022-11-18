@@ -83,7 +83,7 @@ const getTime = (duration: number) => {
   }, 1000);
 };
 
-watch(duration, (newValue, oldValue) => {
+watch(duration, () => {
   // 当剩余时间有变化时需要重新倒计时。比如有tab 切换显示活动剩余时间的场景，切换了就需要重新计算
   countDown();
 });

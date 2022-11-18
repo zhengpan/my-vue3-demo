@@ -28,7 +28,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 
 const isUnFold = ref<boolean>(false);
 let isMoreThan2Line = ref<boolean>(false);

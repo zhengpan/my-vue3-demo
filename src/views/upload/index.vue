@@ -38,7 +38,6 @@ import TimeDown from "./component/timeDown.vue";
 const flag = ref<boolean>(false);
 let message = ref<string>("郑攀");
 let myName = "计算属性";
-let watchValue = "111";
 
 interface IData {
   url: string;
@@ -77,13 +76,12 @@ const dateStr = computed(() => {
   return myName + "，你好！";
 });
 setTimeout(() => {
-  watchValue = "222";
   myName = "刘欢";
   message.value = "刘欢";
   flag.value = true;
 }, 2000);
 
-watch(message, (newValue, oldValue) => {
+watch(message, () => {
   console.log("watch执行了");
 });
 </script>

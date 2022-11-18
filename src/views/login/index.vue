@@ -48,7 +48,7 @@ const password = ref("");
 const doLogin = async (values: ILoginValue) => {
   const result = await store.handleLogin(values);
   console.log(result);
-  const { code, message, data } = result;
+  const { code, data } = result;
   if (code === 200 && data.token) {
     Dialog.alert({
       title: "提示",
