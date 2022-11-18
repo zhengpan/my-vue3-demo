@@ -37,7 +37,7 @@ import MarqueeNode from "./component/marqueeNode.vue";
 import TimeDown from "./component/timeDown.vue";
 const flag = ref<boolean>(false);
 let message = ref<string>("郑攀");
-let myName = "计算属性";
+let myName: string = "计算属性";
 
 interface IData {
   url: string;
