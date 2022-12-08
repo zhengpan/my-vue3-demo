@@ -33,8 +33,8 @@
 <script setup lang="ts">
 import { reactive, ref, computed, watch } from "vue";
 import { uploadFile } from "@/api";
-import MarqueeNode from "./component/marqueeNode.vue";
-import TimeDown from "./component/timeDown.vue";
+import MarqueeNode from "./component/MarqueeNode.vue";
+import TimeDown from "./component/TimeDown.vue";
 const flag = ref<boolean>(false);
 let message = ref<string>("郑攀");
 let myName: string = "计算属性";

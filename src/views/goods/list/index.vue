@@ -1,6 +1,7 @@
 <template>
   <van-button type="primary" size="large" @click="goToAdd">添加商品</van-button>
   <van-list
+    offset="10"
     v-model:loading="loading"
     :finished="finished"
     finished-text="没有更多了"
@@ -31,20 +32,28 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import type { IGoodList } from "@/types/index";
-import { goodsList, goodsDelete } from "@/api";
+import * as goodListApi from "@/api";
+import { windowHeight } from "vant/lib/utils";
 const router = useRouter();
-const list = ref<Array<IGoodList>>([]);
-const loading = ref(false);
-const finished = ref(false);
-let isRefresh = false;
+const route = useRoute();
 
+const list = ref<Array<IGoodList>>([]);
+const loading = ref<boolean>(false);
+const finished = ref<boolean>(false);
+let isRefresh: boolean = false;
+
+let page = 1;
 const onLoad = async () => {
   // 异步更新数据
-  const result = await goodsList({ page: 1, pageSize: 10 });
+  const result = await goodListApi["goodsList"]({
+    page,
+    pageSize: 10,
+  });
   const { code, data, count } = result;
   if (code === 200) {
+    page++;
     if (isRefresh) {
       list.value = [];
     }
@@ -64,9 +73,10 @@ const goToAdd = () => {
   });
 };
 const clickGood = async (_id: string) => {
-  const result = await goodsDelete({ _id });
+  const result = await goodListApi.goodsDelete({ _id });
   if (result.code === 200) {
     isRefresh = true;
+    page = 0;
     onLoad();
   }
 };
@@ -79,3 +89,4 @@ const modifyGood = (_id: string) => {
   });
 };
 </script>
+<style lang="less" scoped></style>

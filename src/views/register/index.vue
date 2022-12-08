@@ -52,12 +52,14 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+
 import { reactive } from "vue";
 import type { IRegisterValue } from "../../types/register";
 import { useStore } from "../../stores/index";
+import { Toast } from "vant";
 const store = useStore();
-
+const router = useRouter();
 const formValues = reactive({
   username: "",
   password: "",
@@ -67,7 +69,13 @@ const formValues = reactive({
 });
 
 const doRegister = async (formValues: IRegisterValue) => {
-  store.handleRegister(formValues);
+  const { code } = await store.handleRegister(formValues);
+  if (code === 200) {
+    Toast("注册成功");
+    router.push({
+      path: "/login",
+    });
+  }
 };
 const onSubmit = (values: IRegisterValue) => {
   console.log("submit", values);
