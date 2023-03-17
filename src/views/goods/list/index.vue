@@ -35,7 +35,6 @@ import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import type { IGoodList } from "@/types/index";
 import * as goodListApi from "@/api";
-import { windowHeight } from "vant/lib/utils";
 const router = useRouter();
 const route = useRoute();
 
@@ -43,11 +42,13 @@ const list = ref<Array<IGoodList>>([]);
 const loading = ref<boolean>(false);
 const finished = ref<boolean>(false);
 let isRefresh: boolean = false;
-
+const apiName = route.query.apiName + "";
+const apiName1 = "goodsList";
 let page = 1;
 const onLoad = async () => {
+  console.log(apiName);
   // 异步更新数据
-  const result = await goodListApi["goodsList"]({
+  const result = await goodListApi[apiName1]({
     page,
     pageSize: 10,
   });

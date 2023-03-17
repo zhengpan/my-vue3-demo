@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import Login from "../views/login/index.vue";
 import Register from "../views/register/index.vue";
@@ -12,11 +12,26 @@ import Flex from "../views/flex/index.vue";
 
 import Foods from "../views/foods/index.vue";
 
+const home = () => import("@/views/home/index.vue");
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    redirect: "/login",
+    name: "home",
+    component: home,
   },
+  // {
+  //   path: "/child-one/:pathMatch(.*)*",
+  //   component: () => import("@/views/childOne/index.vue"),
+  // },
+  // {
+  //   path: "/child-two/:pathMatch(.*)*",
+  //   component: () => import("@/views/childTwo/index.vue"),
+  // },
+  // {
+  //   path: "/",
+  //   redirect: "/login",
+  // },
   {
     path: "/login",
     name: "login",
@@ -60,7 +75,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 

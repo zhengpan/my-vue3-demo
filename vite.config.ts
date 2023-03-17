@@ -37,6 +37,11 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
+      host: "localhost", // 启动后浏览器窗口输入地址就可以进行访问
+      port: 4500, // 端口号
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
       proxy: {
         "/api": {
           target: "http://127.0.0.1:3000/api",

@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getStorage } from "./index";
-
+import { Toast } from "vant";
 const server = axios.create({
   headers: {},
   baseURL: "/api/v1",
@@ -26,6 +26,10 @@ server.interceptors.response.use(
   function (response: AxiosResponse) {
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
+    const { code, msg } = response.data;
+    if (code !== 200) {
+      Toast(msg);
+    }
     return response;
   },
   function (error) {

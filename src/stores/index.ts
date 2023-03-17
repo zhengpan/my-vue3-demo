@@ -22,6 +22,7 @@ export const useStore = defineStore({
       const result = await getUserList(query);
       console.log("回来的数据：", result);
       this.list = result.data;
+      return this.list;
     },
     // 登录
     async handleLogin(params: ILoginValue) {

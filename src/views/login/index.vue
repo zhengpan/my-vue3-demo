@@ -36,13 +36,13 @@
 
 <script setup lang="ts">
 import { RouterLink, useRouter } from "vue-router";
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import type { ILoginValue } from "../../types/index";
 import { useStore } from "../../stores/index";
 import { useLoginStore } from "@/stores/login";
 import { Dialog } from "vant";
 import { setStorage } from "../../utils/index";
-import { mapState } from "pinia";
+// import { mapState } from "pinia";
 
 const router = useRouter();
 const store = useStore();
@@ -85,41 +85,41 @@ loginStore.$subscribe((mutation, state) => {
   console.log(state);
 });
 
-const threeNum = computed(() => {
-  return loginStore.doublePlusOne * 3;
-});
+// const threeNum = computed(() => {
+//   return loginStore.doublePlusOne * 3;
+// });
 
-const unsubscribe = loginStore.$onAction(
-  ({
-    name, // action 名称
-    store, // store 实例，类似 `someStore`
-    args, // 传递给 action 的参数数组
-    after, // 在 action 返回或解决后的钩子
-    onError, // action 抛出或拒绝的钩子
-  }) => {
-    // 为这个特定的 action 调用提供一个共享变量
-    const startTime = Date.now();
-    // 这将在执行 "store "的 action 之前触发。
-    console.log(`Start "${name}" with params [${args.join(", ")}].`);
+// const unsubscribe = loginStore.$onAction(
+//   ({
+//     name, // action 名称
+//     store, // store 实例，类似 `someStore`
+//     args, // 传递给 action 的参数数组
+//     after, // 在 action 返回或解决后的钩子
+//     onError, // action 抛出或拒绝的钩子
+//   }) => {
+//     // 为这个特定的 action 调用提供一个共享变量
+//     const startTime = Date.now();
+//     // 这将在执行 "store "的 action 之前触发。
+//     console.log(`Start "${name}" with params [${args.join(", ")}].`);
 
-    // 这将在 action 成功并完全运行后触发。
-    // 它等待着任何返回的 promise
-    after((result) => {
-      console.log(
-        `Finished "${name}" after ${
-          Date.now() - startTime
-        }ms.\nResult: ${result}.`
-      );
-    });
+//     // 这将在 action 成功并完全运行后触发。
+//     // 它等待着任何返回的 promise
+//     after((result) => {
+//       console.log(
+//         `Finished "${name}" after ${
+//           Date.now() - startTime
+//         }ms.\nResult: ${result}.`
+//       );
+//     });
 
-    // 如果 action 抛出或返回一个拒绝的 promise，这将触发
-    onError((error) => {
-      console.warn(
-        `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`
-      );
-    });
-  }
-);
+//     // 如果 action 抛出或返回一个拒绝的 promise，这将触发
+//     onError((error) => {
+//       console.warn(
+//         `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`
+//       );
+//     });
+//   }
+// );
 </script>
 
 <style lang="less" scoped>
